@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "embrace-kongo",
+    "dev": "embrace-kongo"
+  },
+  "targets": {},
+  "etags": {}
+}
