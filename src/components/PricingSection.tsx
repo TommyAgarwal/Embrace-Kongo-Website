@@ -17,22 +17,21 @@ export default function PricingSection() {
   const [registered, setRegistered] = useState(false);
 
   const includedItems = [
-    "10 nights boutique accommodations in Brazzaville",
-    "Daily masterclasses in traditional dance, percussion & song",
-    "Curated cultural excursions to heritage sanctuaries & artisan guilds",
-    "Authentic daily meals: breakfast, lunch & traditional dinner feasts",
-    "Dedicated private ground transportation & Maya-Maya airport transfers",
-    "Direct mentorship from elder master tradition bearers & facilitators",
-    "Traditional instruments & ceremonial workshop materials provided",
-    "Commemorative Embrace Kongo welcome package & custom keepsake",
+    "10 nights of boutique accommodations in Brazzaville",
+    "Daily masterclasses in traditional dance, percussion, and song",
+    "Guided cultural excursions to heritage sites and artisan communities",
+    "Breakfast, lunch, and traditional dinner each day",
+    "Ground transportation to programmed events, including Maya-Maya Airport transfers",
+    "Instruction and mentorship from master artists, tradition bearers, and facilitators",
+    "Traditional instruments and workshop materials provided",
   ];
 
   const notIncludedItems = [
-    "International round-trip flights to Maya-Maya Airport (BZV)",
-    "Republic of Congo tourist entry visa processing & consular fees",
-    "Mandatory Yellow Fever vaccination & personal medications",
-    "Comprehensive international travel & medical insurance",
-    "Personal incidentals, souvenirs & off-itinerary independent activities",
+    "Round-trip international airfare to Maya-Maya Airport (BZV)",
+    "Republic of the Congo tourist visa and associated fees",
+    "Required vaccinations and personal medications",
+    "International travel insurance",
+    "Personal expenses, souvenirs, and independent activities outside the program itinerary",
   ];
 
   const handleRegisterModal = (e: React.MouseEvent) => {
@@ -81,7 +80,7 @@ export default function PricingSection() {
             <div className="card-header">
               <h3 className="card-title">What&apos;s Included In The Fee</h3>
               <p className="card-subtitle">
-                All core in-country program expenses, accommodations, and guided masterclasses are fully covered.
+                Program tuition covers the core in-country Embrace Kongo experience:
               </p>
             </div>
 
@@ -107,7 +106,7 @@ export default function PricingSection() {
             <div className="card-header">
               <h3 className="card-title">What&apos;s Not Included</h3>
               <p className="card-subtitle">
-                Individual travel preparations, visas, and international transit handled by the participant.
+                Embrace Kongo will provide planning guidance, but participants are responsible for arranging and covering:
               </p>
             </div>
 

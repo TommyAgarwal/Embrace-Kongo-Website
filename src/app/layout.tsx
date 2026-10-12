@@ -11,7 +11,7 @@ const notoSans = Noto_Sans({
 
 export const metadata: Metadata = {
   title: "Embrace Kongo",
-  description: "Join us for a transformative journey to Congo-Brazzaville. A 10-day program of workshops, traditional performances, and guided experiences led by local and international master artists.",
+  description: "10-day program of workshops, traditional performances, and guided experiences led by local and international master artists.",
 };
 
 export default function RootLayout({
