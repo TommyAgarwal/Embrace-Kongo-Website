@@ -10,8 +10,8 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Embrace Kongo '27 | Cultural Retreat & Workshop in Brazzaville",
-  description: "Join the waitlist for Embrace Kongo '27 in Brazzaville, Congo (July 23 – August 1). Experience the rhythm, heritage, and spirit of ancestral Africa.",
+  title: "Embrace Kongo",
+  description: "Join us for a transformative journey to Congo-Brazzaville. A 10-day program of workshops, traditional performances, and guided experiences led by local and international master artists.",
 };
 
 export default function RootLayout({
