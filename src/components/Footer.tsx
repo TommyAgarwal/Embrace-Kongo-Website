@@ -13,17 +13,30 @@ import {
 
 export default function Footer() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbxg7BdCVQKhlfj2TmGMaZAZfrjA-l7i2EdLDq_eP9BN01kTQL5vT1AyJJV75vHY7BUV/exec";
+
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes("@")) return;
 
     setStatus("loading");
-    setTimeout(() => {
+    try {
+      const formData = new URLSearchParams();
+      formData.append("email", email);
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData,
+      });
       setStatus("success");
       setEmail("");
-    }, 600);
+    } catch {
+      setStatus("error");
+    }
   };
 
   const scrollToTop = () => {
@@ -65,7 +78,7 @@ export default function Footer() {
           <div className="footer-links-col footer-newsletter-col">
             <h4 className="footer-heading">Subscribe</h4>
             <p className="footer-newsletter-text">
-              Receive program announcements, itinerary updates, and upcoming info session dates.
+              Join the interest list to receive program dates, participation details, and future announcements.
             </p>
 
             {status === "success" ? (
