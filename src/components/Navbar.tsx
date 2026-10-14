@@ -51,26 +51,14 @@ export default function Navbar() {
 
         {/* Center Column: Exactly Centered Nav Links */}
         <div className="navbar-center-links">
-          <a
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="navbar-link"
-          >
-            EXPERIENCE
+          <a href="#about" className="navbar-link">
+            THE EXPERIENCE
           </a>
-          <a
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="navbar-link"
-          >
-            ABOUT US
+          <a href="#pricing-investment" className="navbar-link">
+            PRICING
           </a>
-          <a
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="navbar-link"
-          >
-            RESOURCES
+          <a href="#resources" className="navbar-link">
+            FAQS
           </a>
         </div>
 
@@ -112,34 +100,25 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="navbar-mobile-menu">
           <a
-            href="#"
+            href="#about"
             className="navbar-mobile-link"
-            onClick={(e) => {
-              e.preventDefault();
-              setMobileMenuOpen(false);
-            }}
+            onClick={() => setMobileMenuOpen(false)}
           >
-            EXPERIENCE
+            THE EXPERIENCE
           </a>
           <a
-            href="#"
+            href="#pricing-investment"
             className="navbar-mobile-link"
-            onClick={(e) => {
-              e.preventDefault();
-              setMobileMenuOpen(false);
-            }}
+            onClick={() => setMobileMenuOpen(false)}
           >
-            ABOUT US
+            PRICING
           </a>
           <a
-            href="#"
+            href="#resources"
             className="navbar-mobile-link"
-            onClick={(e) => {
-              e.preventDefault();
-              setMobileMenuOpen(false);
-            }}
+            onClick={() => setMobileMenuOpen(false)}
           >
-            RESOURCES
+            FAQS
           </a>
           <button
             type="button"

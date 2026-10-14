@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import ImagePlaceholder from "./ImagePlaceholder";
-import { CaretDown, Sparkle, Question } from "@phosphor-icons/react";
+import { CaretDown, Question } from "@phosphor-icons/react";
 
 interface FaqItem {
   id: string;
@@ -61,10 +61,7 @@ export default function FaqSection() {
       <div className="section-inner">
         {/* Section Header */}
         <div className="section-header-center">
-          <div className="section-eyebrow">
-            <Sparkle size={16} weight="fill" className="eyebrow-icon" />
-            <span>KNOWLEDGE BASE</span>
-          </div>
+
 
           <h2 className="section-title">
             FREQUENTLY ASKED <span className="highlight-text">QUESTIONS</span>

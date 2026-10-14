@@ -44,3 +44,8 @@ next-env.d.ts
 .firebase/
 firebase-debug.log*
 
+# local large raw media
+/public/danceclass_original.MOV
+/public/*.MOV
+
+

@@ -4,29 +4,37 @@ import React, { useState } from "react";
 import {
   MapPin,
   CalendarBlank,
-  PaperPlaneRight,
-  CheckCircle,
-  Sparkle,
+  ArrowRight,
+  Check,
+  VideoCamera,
 } from "@phosphor-icons/react";
 import Navbar from "@/components/Navbar";
 import AboutSection from "@/components/AboutSection";
 import PricingSection from "@/components/PricingSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import FaqSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [registered, setRegistered] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalEmail, setModalEmail] = useState("");
+  const [modalName, setModalName] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleModalSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !email.includes("@")) return;
+    if (!modalEmail || !modalEmail.includes("@")) return;
 
-    setStatus("loading");
+    setIsSubmitting(true);
     setTimeout(() => {
-      setStatus("success");
-    }, 600);
+      setIsSubmitting(false);
+      setRegistered(true);
+      setShowModal(false);
+    }, 700);
   };
 
   return (
@@ -39,14 +47,6 @@ export default function Home() {
         <div className="hero-overlay" />
 
         <div className="hero-content">
-          {/* Top Status Pill Badge */}
-          <div className="coming-soon-badge">
-            <span className="badge-icon">
-              <Sparkle size={15} weight="fill" />
-            </span>
-            <span>Coming Soon — Join The Waitlist</span>
-          </div>
-
           {/* Mega Title + Flanking Metadata Block */}
           <div className="hero-title-block">
             <div className="flanking-meta">
@@ -71,41 +71,107 @@ export default function Home() {
             traditional performances, and guided experiences led by local and international master artists.
           </p>
 
-          {/* Primary CTA: Email Waitlist Capture */}
-          <div className="waitlist-container" id="waitlist">
-            {status === "success" ? (
-              <div className="waitlist-success">
-                <CheckCircle size={24} weight="fill" />
-                <span>You&apos;re on the waitlist! We&apos;ll notify you as soon as full updates launch.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="waitlist-form">
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your email address..."
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="waitlist-input"
-                />
-                <button type="submit" disabled={status === "loading"} className="waitlist-btn">
-                  {status === "loading" ? "Joining..." : "Get Notified for Launch"}
-                  <PaperPlaneRight size={18} weight="bold" />
-                </button>
-              </form>
-            )}
+          {/* Primary CTA: Registration button for upcoming informational session */}
+          <div className="hero-cta-container">
+            <button
+              type="button"
+              onClick={handleOpenModal}
+              className={`hero-register-btn ${registered ? "registered" : ""}`}
+            >
+              {registered ? (
+                <>
+                  <Check size={20} weight="bold" />
+                  <span>RSVP Confirmed for Info Session</span>
+                </>
+              ) : (
+                <>
+                  <VideoCamera size={20} weight="fill" />
+                  <span>Register for Virtual Info Session</span>
+                  <ArrowRight size={18} weight="bold" />
+                </>
+              )}
+            </button>
+            <span className="hero-cta-note">
+              Sunday, November 15, 2026 &bull; 10:00 AM PST &bull; Free on Zoom
+            </span>
           </div>
         </div>
       </main>
+
+      {/* Registration Modal */}
+      {showModal && (
+        <div className="modal-backdrop" onClick={() => setShowModal(false)}>
+          <div
+            className="modal-card"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+          >
+            <div className="modal-header">
+              <div className="modal-badge">
+                <VideoCamera size={16} weight="fill" />
+                <span>Live Virtual Info Session</span>
+              </div>
+              <h3 className="modal-title">RSVP for the Informational Session</h3>
+              <p className="modal-subtitle">
+                Join our organizers and lead facilitators for a live walkthrough of the itinerary,
+                accommodations, travel prep, and Q&amp;A.
+              </p>
+            </div>
+
+            <form onSubmit={handleModalSubmit} className="modal-form">
+              <div className="modal-input-group">
+                <label htmlFor="rsvp-name" className="modal-label">Your Name</label>
+                <input
+                  id="rsvp-name"
+                  type="text"
+                  required
+                  placeholder="e.g. Maya Robinson"
+                  value={modalName}
+                  onChange={(e) => setModalName(e.target.value)}
+                  className="modal-input"
+                />
+              </div>
+
+              <div className="modal-input-group">
+                <label htmlFor="rsvp-email" className="modal-label">Email Address</label>
+                <input
+                  id="rsvp-email"
+                  type="email"
+                  required
+                  placeholder="name@example.com"
+                  value={modalEmail}
+                  onChange={(e) => setModalEmail(e.target.value)}
+                  className="modal-input"
+                />
+              </div>
+
+              <div className="modal-actions">
+                <button
+                  type="button"
+                  onClick={() => setShowModal(false)}
+                  className="modal-cancel-btn"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="modal-submit-btn"
+                >
+                  {isSubmitting ? "Registering..." : "Confirm My Spot"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* About Section */}
       <AboutSection />
 
       {/* Pricing / Investment Section */}
       <PricingSection />
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
 
       {/* FAQ Section */}
       <FaqSection />

@@ -1,17 +1,31 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import {
-  InstagramLogo,
-  FacebookLogo,
-  EnvelopeSimple,
   ArrowUp,
+  ArrowUpRight,
   MapPin,
   CalendarBlank,
+  PaperPlaneRight,
+  CheckCircle,
 } from "@phosphor-icons/react";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !email.includes("@")) return;
+
+    setStatus("loading");
+    setTimeout(() => {
+      setStatus("success");
+      setEmail("");
+    }, 600);
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -21,7 +35,7 @@ export default function Footer() {
       <div className="footer-container">
         {/* Main Footer Top Grid */}
         <div className="footer-top-grid">
-          {/* Brand & Mission Column */}
+          {/* Brand & Dates Column */}
           <div className="footer-brand-col">
             <a href="#" className="footer-brand-logo">
               <Image
@@ -32,10 +46,6 @@ export default function Footer() {
                 className="footer-logo-img"
               />
             </a>
-            <p className="footer-description">
-              A transformative 10-day cultural journey honoring the rhythms, master elders, and
-              ancestral traditions of Congo-Brazzaville.
-            </p>
 
             <div className="footer-meta-badges">
               <div className="footer-meta-item">
@@ -49,70 +59,40 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Navigation Links */}
-          <div className="footer-links-col">
-            <h4 className="footer-heading">Navigation</h4>
-            <ul className="footer-link-list">
-              <li>
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className="footer-link"
-                >
-                  Experience
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className="footer-link"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className="footer-link"
-                >
-                  Resources
-                </a>
-              </li>
-              <li>
-                <a href="#testimonials" className="footer-link">
-                  Community Testimonials
-                </a>
-              </li>
-              <li>
-                <a href="#waitlist" className="footer-link">
-                  Join Waitlist
-                </a>
-              </li>
-            </ul>
-          </div>
 
-          {/* Cultural Program Details */}
-          <div className="footer-links-col">
-            <h4 className="footer-heading">Cultural Traditions</h4>
-            <ul className="footer-link-list">
-              <li>
-                <span className="footer-text-item">Bakongo Heritage &amp; Rhythms</span>
-              </li>
-              <li>
-                <span className="footer-text-item">Makwa (Kingoli) Movement</span>
-              </li>
-              <li>
-                <span className="footer-text-item">Traditional Percussion Masterclasses</span>
-              </li>
-              <li>
-                <span className="footer-text-item">Elder Oral Storytelling Circles</span>
-              </li>
-              <li>
-                <span className="footer-text-item">Historical Excursions</span>
-              </li>
-            </ul>
+
+          {/* Email Capture / Newsletter Column */}
+          <div className="footer-links-col footer-newsletter-col">
+            <h4 className="footer-heading">Subscribe</h4>
+            <p className="footer-newsletter-text">
+              Receive program announcements, itinerary updates, and upcoming info session dates.
+            </p>
+
+            {status === "success" ? (
+              <div className="footer-newsletter-success">
+                <CheckCircle size={20} weight="fill" />
+                <span>Thank you for subscribing!</span>
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="footer-newsletter-form">
+                <input
+                  type="email"
+                  required
+                  placeholder="Enter your email address..."
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="footer-newsletter-input"
+                />
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="footer-newsletter-btn"
+                  aria-label="Subscribe"
+                >
+                  <PaperPlaneRight size={18} weight="bold" />
+                </button>
+              </form>
+            )}
           </div>
 
           {/* Contact & Social Links */}
@@ -122,32 +102,23 @@ export default function Footer() {
               Have questions or want to partner with Embrace Kongo? Reach out directly:
             </p>
 
-            <a
-              href="mailto:embracekongo@gmail.com"
-              className="footer-email-link"
-            >
-              <EnvelopeSimple size={18} weight="bold" />
-              <span>embracekongo@gmail.com</span>
-            </a>
-
-            <div className="footer-social-links">
+            <div className="footer-contact-group">
               <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-btn"
-                aria-label="Follow Embrace Kongo on Instagram"
+                href="mailto:embracekongo@gmail.com"
+                className="footer-contact-link"
               >
-                <InstagramLogo size={20} weight="fill" />
+                <span>embracekongo@gmail.com</span>
+                <ArrowUpRight size={16} weight="bold" className="link-arrow-icon" />
               </a>
+
               <a
-                href="https://facebook.com"
+                href="https://www.instagram.com/embrace_kongo_/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-btn"
-                aria-label="Follow Embrace Kongo on Facebook"
+                className="footer-contact-link"
               >
-                <FacebookLogo size={20} weight="fill" />
+                <span>Instagram</span>
+                <ArrowUpRight size={16} weight="bold" className="link-arrow-icon" />
               </a>
             </div>
           </div>
@@ -158,20 +129,6 @@ export default function Footer() {
           <p className="copyright-text">
             &copy; 2027 Embrace Kongo. All rights reserved.
           </p>
-
-          <div className="footer-bottom-links">
-            <a href="#" className="legal-link">
-              Privacy Policy
-            </a>
-            <span className="separator">•</span>
-            <a href="#" className="legal-link">
-              Terms of Service
-            </a>
-            <span className="separator">•</span>
-            <a href="#" className="legal-link">
-              Cultural Code of Conduct
-            </a>
-          </div>
 
           <button
             type="button"

@@ -1,21 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   CheckCircle,
   XCircle,
-  Sparkle,
   ShieldCheck,
   AirplaneTakeoff,
-  CalendarBlank,
-  VideoCamera,
-  ArrowRight,
-  Check,
 } from "@phosphor-icons/react";
 
 export default function PricingSection() {
-  const [registered, setRegistered] = useState(false);
-
   const includedItems = [
     "10 nights of boutique accommodations in Brazzaville",
     "Daily masterclasses in traditional dance, percussion, and song",
@@ -34,22 +27,11 @@ export default function PricingSection() {
     "Personal expenses, souvenirs, and independent activities outside the program itinerary",
   ];
 
-  const handleRegisterModal = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setRegistered(true);
-    setTimeout(() => setRegistered(false), 3500);
-  };
-
   return (
     <section id="pricing-investment" className="section-container pricing-section">
       <div className="section-inner">
         {/* Section Header */}
         <div className="section-header-center">
-          <div className="section-eyebrow">
-            <Sparkle size={16} weight="fill" className="eyebrow-icon" />
-            <span>TRANSPARENT TUITION</span>
-          </div>
-
           <h2 className="section-title">
             EMBRACE KONGO <span className="highlight-text">INVESTMENT</span>
           </h2>
@@ -120,53 +102,6 @@ export default function PricingSection() {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-
-        {/* Underneath Cards: Live Virtual Info Session / Q&A Prompt */}
-        <div className="info-session-cta-card">
-          <div className="info-session-content">
-            <div className="info-session-badge">
-              <VideoCamera size={16} weight="fill" />
-              <span>Live Virtual Info Session &amp; Q&amp;A</span>
-            </div>
-
-            <h3 className="info-session-title">
-              Have Questions Before You Join? Meet The Team Live.
-            </h3>
-
-            <p className="info-session-description">
-              Join our organizers and lead facilitators for a live walkthrough of the 10-day itinerary,
-              accommodations, travel preparations, and cultural traditions. Open Q&amp;A will follow.
-            </p>
-
-            <div className="info-session-schedule">
-              <CalendarBlank size={18} weight="fill" className="schedule-icon" />
-              <span className="schedule-text">
-                Sunday, November 15, 2026 &bull; 1:00 PM EST (10:00 AM PST / 7:00 PM Brazzaville Time)
-              </span>
-            </div>
-          </div>
-
-          <div className="info-session-action">
-            <button
-              type="button"
-              onClick={handleRegisterModal}
-              className={`info-session-btn ${registered ? "registered" : ""}`}
-            >
-              {registered ? (
-                <>
-                  <Check size={18} weight="bold" />
-                  <span>RSVP Confirmed! Check Email</span>
-                </>
-              ) : (
-                <>
-                  <span>Register for Virtual Info Session</span>
-                  <ArrowRight size={18} weight="bold" />
-                </>
-              )}
-            </button>
-            <span className="info-session-note">Free Registration &bull; Held live on Zoom</span>
           </div>
         </div>
       </div>
