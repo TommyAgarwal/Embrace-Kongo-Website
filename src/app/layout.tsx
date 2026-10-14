@@ -10,7 +10,7 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://embracekongo.com"),
+  metadataBase: new URL("https://embrace-kongo.web.app"),
   title: "Embrace Kongo",
   description:
     "10-day program of workshops, traditional performances, and guided experiences led by local and international master artists.",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "Embrace Kongo",
     description:
       "10-day program of workshops, traditional performances, and guided experiences led by local and international master artists.",
-    url: "https://embracekongo.com",
+    url: "https://embrace-kongo.web.app",
     siteName: "Embrace Kongo",
     images: [
       {
