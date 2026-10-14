@@ -10,8 +10,34 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://embracekongo.com"),
   title: "Embrace Kongo",
-  description: "10-day program of workshops, traditional performances, and guided experiences led by local and international master artists.",
+  description:
+    "10-day program of workshops, traditional performances, and guided experiences led by local and international master artists.",
+  openGraph: {
+    title: "Embrace Kongo",
+    description:
+      "10-day program of workshops, traditional performances, and guided experiences led by local and international master artists.",
+    url: "https://embracekongo.com",
+    siteName: "Embrace Kongo",
+    images: [
+      {
+        url: "/linkpreview.png",
+        width: 1200,
+        height: 630,
+        alt: "Embrace Kongo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Embrace Kongo",
+    description:
+      "10-day program of workshops, traditional performances, and guided experiences led by local and international master artists.",
+    images: ["/linkpreview.png"],
+  },
 };
 
 export default function RootLayout({
