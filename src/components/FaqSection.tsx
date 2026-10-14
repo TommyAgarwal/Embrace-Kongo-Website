@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import ImagePlaceholder from "./ImagePlaceholder";
+import Image from "next/image";
 import { CaretDown, Question } from "@phosphor-icons/react";
 
 interface FaqItem {
@@ -61,19 +61,13 @@ export default function FaqSection() {
       <div className="section-inner">
         {/* Section Header */}
         <div className="section-header-center">
-
-
-          <h2 className="section-title">
-            FREQUENTLY ASKED <span className="highlight-text">QUESTIONS</span>
-          </h2>
-
-          <p className="section-subtitle">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Everything you need to know
-            about preparing for your 10-day cultural journey to Brazzaville.
-          </p>
+          <div className="experience-title-block faq-title-block">
+            <span className="experience-title-flank">Frequently Asked</span>
+            <h2 className="experience-title-main">Questions</h2>
+          </div>
         </div>
 
-        {/* FAQ Grid: Left Accordion, Right 1 Orange Placeholder Image */}
+        {/* FAQ Grid: Left Accordion, Right Photo */}
         <div className="faq-grid">
           {/* Left Column: Accordion-style menu */}
           <div className="faq-accordion-col">
@@ -117,28 +111,17 @@ export default function FaqSection() {
             </div>
           </div>
 
-          {/* Right Column: 1 Image Placeholder (Orange rectangle) */}
+          {/* Right Column: groupshot2.jpg Photo */}
           <div className="faq-visual-col">
-            <div className="faq-visual-card">
-              <ImagePlaceholder
-                label="TRAVEL PREPARATION & FIELD GUIDE"
-                subtext="800 x 950 • Orange Image Placeholder"
-                aspectRatio="4 / 5"
+            <div className="faq-image-wrapper">
+              <Image
+                src="/groupshot2.JPG"
+                alt="Embrace Kongo cultural journey"
+                width={1200}
+                height={1500}
+                unoptimized
+                className="faq-photo"
               />
-              <div className="faq-visual-content">
-                <span className="faq-visual-tag">Travel Resource Guide</span>
-                <h4 className="faq-visual-title">Have additional questions before applying?</h4>
-                <p className="faq-visual-desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Our coordinator team is
-                  ready to answer questions regarding visas, flights, or dietary requirements.
-                </p>
-                <a
-                  href="mailto:embracekongo@gmail.com"
-                  className="faq-visual-link"
-                >
-                  Contact Coordination Team &rarr;
-                </a>
-              </div>
             </div>
           </div>
         </div>

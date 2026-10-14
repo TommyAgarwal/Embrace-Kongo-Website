@@ -11,20 +11,20 @@ import {
 export default function PricingSection() {
   const includedItems = [
     "10 nights of boutique accommodations in Brazzaville",
-    "Daily masterclasses in traditional dance, percussion, and song",
-    "Guided cultural excursions to heritage sites and artisan communities",
-    "Breakfast, lunch, and traditional dinner each day",
-    "Ground transportation to programmed events, including Maya-Maya Airport transfers",
-    "Instruction and mentorship from master artists, tradition bearers, and facilitators",
-    "Traditional instruments and workshop materials provided",
+    "Daily dance, percussion, and song masterclasses",
+    "Guided heritage and artisan excursions",
+    "Breakfast, lunch, and dinner daily",
+    "Transportation to programmed events and BZV airport transfers",
+    "Instruction from master artists and tradition bearers",
+    "Instruments and workshop materials",
   ];
 
   const notIncludedItems = [
-    "Round-trip international airfare to Maya-Maya Airport (BZV)",
-    "Republic of the Congo tourist visa and associated fees",
+    "International airfare to BZV",
+    "Republic of the Congo tourist visa and fees",
     "Required vaccinations and personal medications",
     "International travel insurance",
-    "Personal expenses, souvenirs, and independent activities outside the program itinerary",
+    "Personal expenses and off-itinerary activities",
   ];
 
   return (
@@ -32,21 +32,19 @@ export default function PricingSection() {
       <div className="section-inner">
         {/* Section Header */}
         <div className="section-header-center">
-          <h2 className="section-title">
-            EMBRACE KONGO <span className="highlight-text">INVESTMENT</span>
-          </h2>
+          <div className="experience-title-block pricing-title-block">
+            <span className="experience-title-flank">Embrace Kongo</span>
+            <h2 className="experience-title-main">Investment</h2>
+          </div>
 
           <div className="pricing-headline-block">
-            <div className="price-tag-wrap">
-              <span className="price-currency">$</span>
-              <span className="price-amount">3,499</span>
-              <span className="price-term">USD / participant</span>
+            <div className="price-badge">
+              <div className="price-tag-wrap">
+                <span className="price-amount">$3499</span>
+                <span className="price-term">/ person</span>
+              </div>
+              <span className="price-subtext">Monthly payment plans available</span>
             </div>
-            <p className="price-description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. A 10-day immersive cultural
-              retreat in Brazzaville, Congo (July 23 – August 1, 2027). Transparent pricing with
-              curated group intimacy and elder mentorship.
-            </p>
           </div>
         </div>
 
