@@ -51,7 +51,7 @@ export default function Home() {
           {/* Primary CTA: Registration link for upcoming informational session */}
           <div className="hero-cta-container">
             <a
-              href="https://zoom.us"
+              href="https://www.eventbrite.com/e/embrace-kongo-2027-virtual-informational-session-tickets-2003477840152"
               target="_blank"
               rel="noopener noreferrer"
               className="hero-register-btn"
@@ -61,7 +61,7 @@ export default function Home() {
               <ArrowRight size={18} weight="bold" />
             </a>
             <span className="hero-cta-note">
-              Sunday, November 15, 2026 &bull; 10:00 AM PST &bull; Free on Zoom
+              Thursday, November 12, 2026 &bull; 6:30 PM PST
             </span>
           </div>
         </div>
